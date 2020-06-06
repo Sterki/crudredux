@@ -2,30 +2,28 @@ import React, {useState} from 'react';
 import {creaNuevoProducto} from '../actions/productosAction';
 import {useDispatch, useSelector} from 'react-redux';
 
-
 const NuevoProducto = () => {
 
-
-    const [nombre, guardarNombre] = useState('');
+    const [nombre, guardarProducto] = useState('');
     const [precio, guardarPrecio] = useState(0);
 
     const dispatch = useDispatch();
 
-    const agregarProducto = (producto) => dispatch(creaNuevoProducto(producto));
+    const agregaProducto = (producto) => dispatch( creaNuevoProducto(producto) );
 
-
-    const handlesubmit = e =>{
+    const handleSubmit = e =>{
 
         e.preventDefault();
-        //validar campos
+
+        //validar the form
 
 
-        // enviar al action
-        agregarProducto({
-
+        // send the values to the principal action
+        agregaProducto({
             nombre, precio
         });
     }
+   
     
     return ( 
 
@@ -37,7 +35,7 @@ const NuevoProducto = () => {
                                 Agregar nuevo producto
                             </h2>
                             <form
-                                  onSubmit={handlesubmit}
+                                onSubmit={handleSubmit} 
                             >
                                 <div className="form-group">
                                     <label>Nombre Producto</label>
@@ -47,7 +45,7 @@ const NuevoProducto = () => {
                                         placeholder="Nombre producto"
                                         name="nombre"
                                         value={nombre}
-                                        onChange={e=>guardarNombre(e.target.value)}
+                                        onChange={e=>guardarProducto(e.target.value)}                                        
                                                                                                                                                             
                                     />
                                 </div>
@@ -59,8 +57,7 @@ const NuevoProducto = () => {
                                         placeholder="Precio Producto"
                                         name="precio"
                                         value={precio}
-                                        onChange={e=>guardarPrecio(Number(e.target.value))}
-                                        
+                                        onChange={e=>guardarPrecio(Number(e.target.value))}                                                                       
                                                                               
                                     />
                                 </div>

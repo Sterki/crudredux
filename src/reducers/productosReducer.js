@@ -11,15 +11,16 @@ const inisialState = {
 export default function(state = inisialState, action) {
 
     switch(action.type){
-        case AGREGAR_PRODUCTO:
-            return{
-                ...state,
-                loading: true
-            }
+       case AGREGAR_PRODUCTO:
+           return{
+               ...state,
+               loading: true
+           }
         case AGREGAR_PRODUCTO_EXITO:
             return{
                 ...state,
-                productos: [...state.productos, action.payload]
+                productos: [...state.productos, action.payload],
+                loading: false
             }
         case AGREGAR_PRODUCTO_ERROR:
             return{

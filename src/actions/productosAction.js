@@ -5,30 +5,34 @@ import {AGREGAR_PRODUCTO,
 
 export function creaNuevoProducto(producto){
 
-    return(dispatch) =>{
+return(dispatch) =>{
 
-        dispatch( agregarProducto() );
-        try {
+    dispatch( agregarProducto() )
+    try {   
 
-            dispatch( agregarProductoExito(producto) );
-
-        } catch (error) {
-            console.log(error);
-            dispatch( agregarProductoError() );
-        }
+        dispatch( agregaProductosExito(producto) );
+        
+    } catch (error) {
+        console.log(error)
+        dispatch( agregaProductosError() );
     }
+
 }
+}
+
 const agregarProducto = () =>({
 
     type: AGREGAR_PRODUCTO
 })
-const agregarProductoExito = (producto) =>({
+
+const agregaProductosExito = (producto) =>({
+
 
     type: AGREGAR_PRODUCTO_EXITO,
     payload: producto
+
 })
-const agregarProductoError = () =>({
+const agregaProductosError = () =>({
 
     type: AGREGAR_PRODUCTO_ERROR
-
 })
