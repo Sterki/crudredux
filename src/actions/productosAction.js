@@ -1,38 +1,35 @@
-import {AGREGAR_PRODUCTO,
-        AGREGAR_PRODUCTO_EXITO,
+import {AGREGAR_PRODUCTO, 
+        AGREGAR_PRODUCTO_EXITO, 
         AGREGAR_PRODUCTO_ERROR} from '../types';
-
+import clienteAxios from '../config/axios';
 
 export function creaNuevoProducto(producto){
 
-return(dispatch) =>{
+    return async(dispatch) =>{
 
-    dispatch( agregarProducto() )
-    try {   
+            dispatch( agregarProducto() );
+            try {
 
-        dispatch( agregaProductosExito(producto) );
-        
-    } catch (error) {
-        console.log(error)
-        dispatch( agregaProductosError() );
+                    await clienteAxios.post('/productos', producto);
+                    dispatch( agregarProductoExito(producto) );
+
+            } catch (error) {
+                console.log(error);
+                dispatch( agregarProductoError() );
+            } 
     }
-
 }
-}
-
-const agregarProducto = () =>({
+const agregarProducto = () => ({
 
     type: AGREGAR_PRODUCTO
+
 })
-
-const agregaProductosExito = (producto) =>({
-
+const agregarProductoExito = (producto) => ({
 
     type: AGREGAR_PRODUCTO_EXITO,
     payload: producto
-
-})
-const agregaProductosError = () =>({
+}) 
+const agregarProductoError = () => ({
 
     type: AGREGAR_PRODUCTO_ERROR
 })

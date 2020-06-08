@@ -1,30 +1,34 @@
 import React, {useState} from 'react';
-import {creaNuevoProducto} from '../actions/productosAction';
-import {useDispatch, useSelector} from 'react-redux';
+
+import { creaNuevoProducto } from '../actions/productosAction';
+import{ useDispatch, useSelector } from 'react-redux';
 
 const NuevoProducto = () => {
 
-    const [nombre, guardarProducto] = useState('');
+    const [nombre, guardarNombre] = useState('');
     const [precio, guardarPrecio] = useState(0);
 
     const dispatch = useDispatch();
-
-    const agregaProducto = (producto) => dispatch( creaNuevoProducto(producto) );
-
+    
+    const agregarProducto = (producto) => dispatch(creaNuevoProducto(producto));
+    
     const handleSubmit = e =>{
 
         e.preventDefault();
 
-        //validar the form
+        // validate the form
+        if(nombre.trim() === '' || precio <= 0){
 
+            return;
+        }
 
-        // send the values to the principal action
-        agregaProducto({
-            nombre, precio
+        // send to the product action
+        agregarProducto({
+            nombre,
+            precio
         });
     }
-   
-    
+
     return ( 
 
       <div className="row justify-content-center">
@@ -35,7 +39,7 @@ const NuevoProducto = () => {
                                 Agregar nuevo producto
                             </h2>
                             <form
-                                onSubmit={handleSubmit} 
+                                onSubmit={handleSubmit}
                             >
                                 <div className="form-group">
                                     <label>Nombre Producto</label>
@@ -45,8 +49,7 @@ const NuevoProducto = () => {
                                         placeholder="Nombre producto"
                                         name="nombre"
                                         value={nombre}
-                                        onChange={e=>guardarProducto(e.target.value)}                                        
-                                                                                                                                                            
+                                        onChange={e=>guardarNombre(e.target.value)}                                                                                                                                                                                                                                         
                                     />
                                 </div>
                                 <div className="form-group">
@@ -57,8 +60,7 @@ const NuevoProducto = () => {
                                         placeholder="Precio Producto"
                                         name="precio"
                                         value={precio}
-                                        onChange={e=>guardarPrecio(Number(e.target.value))}                                                                       
-                                                                              
+                                        onChange={e=>guardarPrecio(Number(e.target.value))}                                                                                                                                                                                                                                    
                                     />
                                 </div>
                                 <button 
