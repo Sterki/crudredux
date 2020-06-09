@@ -1,84 +1,85 @@
-import {AGREGAR_PRODUCTO, 
-    AGREGAR_PRODUCTO_EXITO, 
-    AGREGAR_PRODUCTO_ERROR,
-    COMENZAR_DESCARGA,
-    DESCARGA_PRODUCTOS_EXITO,
-    DESCARGA_PRODUCTOS_ERROR} from '../types';
+import {AGREGA_PRODUCTOS, 
+    AGREGA_PRODUCTOS_EXITO, 
+    AGREGA_PRODUCTOS_ERROR,
+    OBTIENE_PRODUCTOS,
+    OBTIENE_PRODUCTOS_EXITO,
+    OBTIENE_PRODUCTOS_ERROR} from '../types';
 
 import clienteAxios from '../config/axios';
 import Swal from 'sweetalert2';
 
-export function creaNuevoProducto(producto){
 
-    return async(dispatch) =>{
+    export function creaNuevoProducto(producto){
 
-            dispatch( agregarProducto() );
+        return async(dispatch)=>{
+
+                dispatch( agregaProductos() );
+
             try {
 
-                    await clienteAxios.post('/productos', producto);
-                    dispatch( agregarProductoExito(producto) );
-                    Swal.fire(
-                        'Correcto',
-                        'El producto se agregó correctamente',
-                        'success'
-                    );
+                await clienteAxios.post('/productos', producto);
+                dispatch( agregaProductosExito(producto) );
+                Swal.fire(
+                    'Bien hecho!',
+                    'Se ha almacenado el producto correctamente!',
+                    'success'
+                )
+
 
             } catch (error) {
                 console.log(error);
-                dispatch( agregarProductoError() );
+                dispatch( agregaProductosError() );
                 Swal.fire({
                     icon: 'error',
-                    title: 'Oh no...',
-                    text:'Hubo un error!',                    
+                    title: 'Oh noo....',
+                    text: 'Hubo un error, intentelo de nuevo!'
                 })
-            } 
+            }         
+        }
     }
-}
-const agregarProducto = () => ({
 
-    type: AGREGAR_PRODUCTO
+    const agregaProductos = () => ({
 
-})
-const agregarProductoExito = (producto) => ({
+        type: AGREGA_PRODUCTOS
+    })
+    const agregaProductosExito = (producto) => ({
 
-    type: AGREGAR_PRODUCTO_EXITO,
-    payload: producto
-}) 
-const agregarProductoError = () => ({
+        type: AGREGA_PRODUCTOS_EXITO,
+        payload: producto
 
-    type: AGREGAR_PRODUCTO_ERROR
-})
+    })
+    const agregaProductosError = () => ({
 
-export function obtieneProductos(){
+        type: AGREGA_PRODUCTOS_ERROR
+    })
 
-    return async(dispatch) =>{
+    export function obtieneProductosAction(){
 
-        dispatch( comenzarDescarga() );
+        return async(dispatch) =>{
+
+                dispatch( obtieneProductos() );
+
             try {
-                    const resultado = await clienteAxios.get('/productos');
-                    // console.log(resultado.data);
-                    dispatch( descargaExitosa(resultado.data) );
-
+                     const resultado = await clienteAxios.get('/productos');
+                     console.log(resultado.data);
+                     dispatch( obtieneProductosExito(resultado.data) );
             } catch (error) {
                 console.log(error);
-                dispatch( descargaError() );
+                dispatch( obtieneProductosError() );
             }
+
+        }
     }
-}
+    const obtieneProductos = () => ({
 
-const comenzarDescarga = () =>({
+        type: OBTIENE_PRODUCTOS
+    })
+    const obtieneProductosExito = (productos) => ({
 
-    type: COMENZAR_DESCARGA
+        type: OBTIENE_PRODUCTOS_EXITO,
+        payload: productos
+    })
+    const obtieneProductosError = () =>({
 
-})
-const descargaExitosa = (productos) =>({
-
-    type: DESCARGA_PRODUCTOS_EXITO,
-    payload: productos
-
-
-})
-const descargaError = () => ({
-
-    type: DESCARGA_PRODUCTOS_ERROR
-})
+        type: OBTIENE_PRODUCTOS_ERROR
+    })

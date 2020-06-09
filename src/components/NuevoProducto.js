@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React,{useState} from 'react';
+import {creaNuevoProducto} from '../actions/productosAction';
+import {useDispatch, useSelector} from 'react-redux';
+import Swal from 'sweetalert2';
 
-import { creaNuevoProducto } from '../actions/productosAction';
-import{ useDispatch, useSelector } from 'react-redux';
 
 const NuevoProducto = ({history}) => {
 
@@ -9,34 +10,34 @@ const NuevoProducto = ({history}) => {
     const [precio, guardarPrecio] = useState(0);
 
     const dispatch = useDispatch();
-    
-    const agregarProducto = (producto) => dispatch(creaNuevoProducto(producto));
 
+    const agregaProducto = (producto) => dispatch( creaNuevoProducto(producto) );
 
-    const cargando = useSelector( (state)=> state.producto.loading);
-    const error = useSelector( (state)=> state.producto.error);
-    
-    
+    const cargando = useSelector( (state) => state.producto.loading);
+    const error = useSelector( (state) => state.producto.error);
+
     const handleSubmit = e =>{
 
         e.preventDefault();
 
-        // validate the form
+        // validate emtpy fields
         if(nombre.trim() === '' || precio <= 0){
 
+            Swal.fire({
+                icon: 'error',
+                title: 'Ups...',
+                text: 'Todos los campos son obligatorios'
+            })
             return;
         }
 
-        // send to the product action
-        agregarProducto({
-            nombre,
-            precio
+        agregaProducto({
+            nombre, precio
         });
-
-        // redireccionar hacia el componente de listado de productos
         history.push('/');
 
     }
+
 
     return ( 
 
@@ -58,7 +59,7 @@ const NuevoProducto = ({history}) => {
                                         placeholder="Nombre producto"
                                         name="nombre"
                                         value={nombre}
-                                        onChange={e=>guardarNombre(e.target.value)}                                                                                                                                                                                                                                         
+                                        onChange={e=>guardarNombre(e.target.value)}                                                                                                                                                                                                                                                                                                                        
                                     />
                                 </div>
                                 <div className="form-group">
@@ -69,14 +70,15 @@ const NuevoProducto = ({history}) => {
                                         placeholder="Precio Producto"
                                         name="precio"
                                         value={precio}
-                                        onChange={e=>guardarPrecio(Number(e.target.value))}                                                                                                                                                                                                                                    
+                                        onChange={e=>guardarPrecio(Number(e.target.value))}
+
                                     />
                                 </div>
                                 <button 
                                     type="submit"    
                                     className="btn btn-primary font-weight-bold text-uppercase d-block w-100">Agregar Producto</button>
-                                {cargando ? <p>Cargando...</p> : null}
-                                {error ? <p className="alert alert-danger p2 mt-4 text-center font-weight-bold text-uppercase">Hubo un error</p> : null}
+                                    {cargando ? <p>Cargando ...</p>: null}
+                                    {error ? <p className="alert alert-danger p2 mt-4 text-center text-uppercase">Hubo un error</p> : null}
                             </form>
                     </div>
                 </div>

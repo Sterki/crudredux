@@ -1,47 +1,49 @@
-import {AGREGAR_PRODUCTO, 
-    AGREGAR_PRODUCTO_EXITO, 
-    AGREGAR_PRODUCTO_ERROR,
-    COMENZAR_DESCARGA,
-    DESCARGA_PRODUCTOS_EXITO,
-    DESCARGA_PRODUCTOS_ERROR} from '../types';
+import {AGREGA_PRODUCTOS, 
+    AGREGA_PRODUCTOS_EXITO, 
+    AGREGA_PRODUCTOS_ERROR,
+    OBTIENE_PRODUCTOS,
+    OBTIENE_PRODUCTOS_EXITO,
+    OBTIENE_PRODUCTOS_ERROR} from '../types';
+
 
 const inisialState = {
 
-    productos : [],
+    productos: [],
     error: null,
     loading: false
 }
-
 export default (state = inisialState, action)=>{
 
     switch(action.type){
-        case COMENZAR_DESCARGA:
-        case AGREGAR_PRODUCTO:
+        case AGREGA_PRODUCTOS:
+        case OBTIENE_PRODUCTOS:
             return{
                 ...state,
                 loading: true
             }
-        case AGREGAR_PRODUCTO_EXITO:
+        case AGREGA_PRODUCTOS_EXITO:
             return{
                 ...state,
                 loading: false,
-                productos: [...state.productos, action.payload]
+                productos: [...state.productos, action.payload],
+                error: null
             }
-        case DESCARGA_PRODUCTOS_ERROR:
-        case AGREGAR_PRODUCTO_ERROR:
+        case OBTIENE_PRODUCTOS_ERROR:
+        case AGREGA_PRODUCTOS_ERROR:
             return{
                 ...state,
                 error: true,
                 loading: false
             }
-        case DESCARGA_PRODUCTOS_EXITO:
+        case OBTIENE_PRODUCTOS_EXITO: 
             return{
                 ...state,
+                error: false,
                 loading: false,
-                productos: action.payload,
-                error: false
+                productos: action.payload
             }
         default: return state;
+
     }
 
 }
