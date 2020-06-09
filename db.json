@@ -29,6 +29,36 @@
       "nombre": "helles",
       "precio": 100,
       "id": 6
+    },
+    {
+      "nombre": "paulaner",
+      "precio": 20,
+      "id": 7
+    },
+    {
+      "nombre": "helles",
+      "precio": 100,
+      "id": 8
+    },
+    {
+      "nombre": "aaa",
+      "precio": 20,
+      "id": 9
+    },
+    {
+      "nombre": "aasdasd",
+      "precio": 100,
+      "id": 10
+    },
+    {
+      "nombre": "cristall",
+      "precio": 20,
+      "id": 11
+    },
+    {
+      "nombre": "escudo",
+      "precio": 20,
+      "id": 12
     }
   ]
 }
