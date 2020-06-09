@@ -16,12 +16,16 @@ const Productos = () => {
     }, [])
     
     const productos = useSelector( (state) => state.producto.productos);
-  
+    const error = useSelector( state => state.producto.error);
+    const cargando = useSelector( state => state.producto.loading);
    
     return ( 
         <Fragment>
             <h2 className="text-center my-5">Listado de productos</h2>
+            {error ?<p className="font-weight-bold alert alert-danger text-center mt-4">Hubo un error</p> : null}
+            {cargando ? <p className="text-center">Cargando....</p> : null}
             <table className="table table-striped">
+                   
                 <thead className="bg-primary table-dark">
                     <tr>
                             <th scope="col">Nombre</th>

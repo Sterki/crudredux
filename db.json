@@ -1,84 +1,19 @@
 {
   "productos": [
     {
-      "id": 1,
-      "nombre": "Jugo de Zanahoria",
-      "precio": "31111"
-    },
-    {
-      "id": 2,
-      "nombre": "Jugo de Naranja",
-      "precio": "1"
-    },
-    {
-      "nombre": "Jugo de Naranja",
-      "precio": "300",
-      "id": 3
-    },
-    {
-      "nombre": "Rib Eye 800g",
-      "precio": "200",
-      "id": 4
-    },
-    {
-      "nombre": "Jugo de Fresa",
-      "precio": "200",
-      "id": 5
-    },
-    {
-      "nombre": "helles",
-      "precio": 100,
-      "id": 6
-    },
-    {
-      "nombre": "paulaner",
-      "precio": 20,
-      "id": 7
-    },
-    {
       "nombre": "helles",
       "precio": 100,
       "id": 8
     },
     {
-      "nombre": "aaa",
-      "precio": 20,
+      "nombre": "paulanner",
+      "precio": 400,
       "id": 9
     },
     {
-      "nombre": "aasdasd",
+      "nombre": "cerveza",
       "precio": 100,
       "id": 10
-    },
-    {
-      "nombre": "cristall",
-      "precio": 20,
-      "id": 11
-    },
-    {
-      "nombre": "escudo",
-      "precio": 20,
-      "id": 12
-    },
-    {
-      "nombre": "manzana",
-      "precio": 10,
-      "id": 13
-    },
-    {
-      "nombre": "pera",
-      "precio": 5,
-      "id": 14
-    },
-    {
-      "nombre": "vino",
-      "precio": 30,
-      "id": 15
-    },
-    {
-      "nombre": "pisco",
-      "precio": 50,
-      "id": 16
     }
   ]
 }
