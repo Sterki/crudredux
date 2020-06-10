@@ -1,19 +1,26 @@
 {
   "productos": [
     {
-      "nombre": "helles",
+      "nombre": "helles ",
       "precio": 100,
-      "id": 8
+      "id": 11
     },
     {
-      "nombre": "paulanner",
-      "precio": 400,
-      "id": 9
+      "nombre": "cerveza 10",
+      "precio": "1000",
+      "id": 13
     },
     {
-      "nombre": "cerveza",
-      "precio": 100,
-      "id": 10
+      "nombre": "jugo de mandarina con sabor a fresa",
+      "precio": "300",
+      "creado": "10/6/2020",
+      "id": 14
+    },
+    {
+      "nombre": "paulanner bier",
+      "precio": "200",
+      "creado": "10/6/2020",
+      "id": 15
     }
   ]
 }

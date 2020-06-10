@@ -6,6 +6,9 @@ import Swal from 'sweetalert2';
 
 const NuevoProducto = ({history}) => {
 
+    
+    
+
     const [nombre, guardarNombre] = useState('');
     const [precio, guardarPrecio] = useState(0);
 
@@ -15,7 +18,7 @@ const NuevoProducto = ({history}) => {
 
     const cargando = useSelector( (state) => state.producto.loading);
     const error = useSelector( (state) => state.producto.error);
-
+   
     const handleSubmit = e =>{
 
         e.preventDefault();
@@ -30,9 +33,12 @@ const NuevoProducto = ({history}) => {
             })
             return;
         }
-
+        
         agregaProducto({
-            nombre, precio
+            nombre, precio,
+            creado: new Date().toLocaleDateString()
+            
+           
         });
         history.push('/');
 
