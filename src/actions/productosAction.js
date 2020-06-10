@@ -137,8 +137,8 @@ const eliminarProductoError = () => ({
 export function obtieneProductoEditarAction(producto){
 
     return(dispatch)=>{
-        
-        dispatch( obtieneProductoEditar(producto) );
+            
+            dispatch( obtieneProductoEditar(producto) );
     }
 }
 const obtieneProductoEditar = (producto) => ({
@@ -146,26 +146,26 @@ const obtieneProductoEditar = (producto) => ({
     type: OBTIENE_PRODUCTO_EDITAR,
     payload: producto
 })
+export function editarProductosAction(producto){
 
-export function editarProductoAction(producto){
-
-    
     return async(dispatch)=>{
-        dispatch( editarProducto() );
-        try {
-                await clienteAxios.put(`/productos/${producto.id}`, producto);
-              
-                dispatch( editarProductoExito(producto) );
+            dispatch( editarProducto() );
 
-        } catch (error) {
-            console.log(error);
-            dispatch( editarProductoError() );
-        }
+            try {
+
+                    await clienteAxios.put(`/productos/${producto.id}`, producto)
+                   dispatch( editarProductoExito(producto) );                
+
+            } catch (error) {
+                console.log(error)
+                dispatch( editarProductoError());
+            }
     }
 }
-const editarProducto = () =>({
+const editarProducto = () => ({
 
     type: COMIENZA_EDITAR_PRODUCTO
+
 })
 const editarProductoExito = (producto) => ({
 

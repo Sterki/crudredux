@@ -40,6 +40,7 @@ export default (state = inisialState, action)=>{
         case OBTIENE_PRODUCTOS_ERROR:
         case AGREGA_PRODUCTOS_ERROR:
         case ELIMINAR_PRODUCTO_ERROR:
+        case EDITAR_PRODUCTO_ERROR:
             return{
                 ...state,
                 error: true,
@@ -68,11 +69,11 @@ export default (state = inisialState, action)=>{
                 ...state,
                 productoeditar: action.payload
             }
-        case EDITAR_PRODUCTO_EXITO: 
+        case EDITAR_PRODUCTO_EXITO:
             return{
-                ...state,
-                productoeditar: null,
-                productos: state.productos.map(producto => producto.id === action.payload.id ? producto = action.payload : producto)
+                    ...state,
+                    productoeditar: null,
+                    productos: state.productos.map(producto => producto.id === action.payload.id ? producto = action.payload : producto)
             }
         default: return state;
 

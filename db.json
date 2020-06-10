@@ -6,8 +6,8 @@
       "id": 11
     },
     {
-      "nombre": "cerveza 10",
-      "precio": "1000",
+      "nombre": "cerveza escudo 2",
+      "precio": "10",
       "id": 13
     },
     {
@@ -17,10 +17,28 @@
       "id": 14
     },
     {
-      "nombre": "paulanner bier",
+      "nombre": "paulanner helles",
       "precio": "200",
       "creado": "10/6/2020",
       "id": 15
+    },
+    {
+      "nombre": "coca cola",
+      "precio": 200,
+      "creado": "10/6/2020",
+      "id": 16
+    },
+    {
+      "nombre": "fanta",
+      "precio": 20,
+      "creado": "10/6/2020",
+      "id": 17
+    },
+    {
+      "nombre": "sprite",
+      "precio": "20",
+      "creado": "10/6/2020",
+      "id": 18
     }
   ]
 }
